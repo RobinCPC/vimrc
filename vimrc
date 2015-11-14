@@ -19,11 +19,12 @@ Plugin 'VundleVim/Vundle.vim'
 "--------------
 Plugin 'scrooloose/nerdtree'
 "Plugin 'humiaozuzu/TabBar'
-"Plugin 'majutsushi/tagbar'
+Plugin 'majutsushi/tagbar'
 "Plugin 'mileszs/ack.vim'
 "Plugin 'kien/ctrlp.vim'
 Plugin 'tpope/vim-fugitive'
 "Plugin 'Lokaltog/vim-powerline'
+Plugin 'bling/vim-airline'
 "Plugin 'scrooloose/syntastic'
 "Plugin 'bronson/vim-trailing-whitespace'
 
@@ -48,10 +49,50 @@ filetype plugin indent on    " required
 "-----------------
 
 " NerdTree Setting
-let NERDChristmasTree=0
+let NERDChristmasTree=1
 let NERDTreeWinSize=25
 map <F2> :NERDTreeToggle<CR>
 
+" tagbar seting
+"nmap <leader>tb :TagbarToggle<CR>
+let g:tagbar_ctags_bin='ctags'
+let g:tagbar_width=30
+map <F3> :Tagbar<CR>
+
+" Air-line Setting
+let g:airline_powerline_fonts = 1
+
+if !exists('g:airline_symbols')
+    let g:airline_symbols = {}
+endif
+
+" unicode symbols
+"let g:airline_left_sep = '»'
+"let g:airline_left_sep = '▶'
+"let g:airline_right_sep = '«'
+"let g:airline_right_sep = '◀'
+"let g:airline_symbols.linenr = '␊'
+"let g:airline_symbols.linenr = '␤'
+"let g:airline_symbols.linenr = '¶'
+"let g:airline_symbols.branch = '⎇'
+"let g:airline_symbols.paste = 'ρ'
+"let g:airline_symbols.paste = 'Þ'
+"let g:airline_symbols.paste = '∥'
+"let g:airline_symbols.whitespace = 'Ξ'
+
+" airline symbols
+let g:airline_left_sep = ''
+let g:airline_left_alt_sep = ''
+let g:airline_right_sep = ''
+let g:airline_right_alt_sep = ''
+let g:airline_symbols.branch = ''
+let g:airline_symbols.readonly = ''
+let g:airline_symbols.linenr = ''
+
+let g:airline_symbols.space = "\ua0"
+set t_Co=256
+
+set fillchars+=stl:\ ,stlnc:\
 
 " Common Configuration for Vim
 "================================
@@ -76,3 +117,4 @@ set noswapfile
 " don't redraw while executing macros (good performance config)
 set lazyredraw
 
+colorscheme slate
