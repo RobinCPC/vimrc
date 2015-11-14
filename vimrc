@@ -27,6 +27,8 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'bling/vim-airline'
 "Plugin 'scrooloose/syntastic'
 "Plugin 'bronson/vim-trailing-whitespace'
+Plugin 'vim-scripts/Conque-GDB'
+Plugin 'altercation/vim-colors-solarized'
 
 
 " All of your Plugins must be added before the following line
@@ -96,8 +98,8 @@ endif
 "set fillchars+=stl:\ ,stlnc:\          " if see ^^^^^ in the statusline
 "=========================================
 
-set t_Co=256        " show more color for airline
-let g:airline_theme='wombat'    " change theme of airline
+"set t_Co=256        " show more color for airline
+let g:airline_theme='murmur'    " change theme of airline 'wombot'
 
 " enable tabline
 let g:airline#extensions#tabline#enabled = 1
@@ -114,6 +116,33 @@ set guioptions-=m   " remove Menu bar
 set guioptions-=T   " remove Tool bar
 set guioptions-=r   " remove Right bar
 set guioptions-=L   " remove Left bar
+
+" ConqueGDB Setting
+let g:ConqueTerm_Color=2            " 1: strip color after 200 line, 2: always with color
+let g:ConqueTerm_CloseOnEnd=1       " close conque when program ends running
+let g:ConqueTerm_StartMessages=0    " display warning message if conqueTerm is configed incorrect
+
+" Solarized Setting
+if has('gui_running')
+    set background=light
+else
+    set background=light    "dark
+endif
+
+if $COLORTERM == 'gnome-terminal'
+    set t_Co=256
+end
+
+let g:solarized_termtrans=1
+let g:solarized_termcolors=256
+let g:solarized_contrast="normal"
+let g:solarized_visibility="high"
+colorscheme solarized
+" need to change built-in scheme of ubuntu terminal
+" set Background color: #FDF6E3 #002b36(dark)
+" set Text color:       #839496 #657b83(dark)
+" set Color-palette to Tango (temp)
+
 
 " Common Configuration for Vim
 "================================
@@ -138,4 +167,4 @@ set noswapfile
 " don't redraw while executing macros (good performance config)
 set lazyredraw
 
-colorscheme slate
+"colorscheme slate
