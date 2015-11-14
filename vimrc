@@ -66,6 +66,9 @@ if !exists('g:airline_symbols')
     let g:airline_symbols = {}
 endif
 
+"" If system setting are correct and intall font from powerline
+"" may not this following symbol setting
+"=========================================
 " unicode symbols
 "let g:airline_left_sep = '»'
 "let g:airline_left_sep = '▶'
@@ -81,18 +84,36 @@ endif
 "let g:airline_symbols.whitespace = 'Ξ'
 
 " airline symbols
-let g:airline_left_sep = ''
-let g:airline_left_alt_sep = ''
-let g:airline_right_sep = ''
-let g:airline_right_alt_sep = ''
-let g:airline_symbols.branch = ''
-let g:airline_symbols.readonly = ''
-let g:airline_symbols.linenr = ''
+"let g:airline_left_sep = ''
+"let g:airline_left_alt_sep = ''
+"let g:airline_right_sep = ''
+"let g:airline_right_alt_sep = ''
+"let g:airline_symbols.branch = ''
+"let g:airline_symbols.readonly = ''
+"let g:airline_symbols.linenr = '':
 
-let g:airline_symbols.space = "\ua0"
-set t_Co=256
+"let g:airline_symbols.space = '"\ua0"
+"set fillchars+=stl:\ ,stlnc:\          " if see ^^^^^ in the statusline
+"=========================================
 
-set fillchars+=stl:\ ,stlnc:\
+set t_Co=256        " show more color for airline
+let g:airline_theme='wombat'    " change theme of airline
+
+" enable tabline
+let g:airline#extensions#tabline#enabled = 1
+" set left separator
+let g:airline#extensions#tabline#left_sep = ' '
+" set left separator which are not editting
+let g:airline#extensions#tabline#left_alt_sep = '|'
+" show buffer number
+let g:airline#extensions#tabline#buffer_nr_show = 1
+
+" GVim Config
+set guifont=Source\ Code\ Pro\ for\ Powerline\ Regular\ 10
+set guioptions-=m   " remove Menu bar
+set guioptions-=T   " remove Tool bar
+set guioptions-=r   " remove Right bar
+set guioptions-=L   " remove Left bar
 
 " Common Configuration for Vim
 "================================
