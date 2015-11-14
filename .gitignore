@@ -1,0 +1,5 @@
+### gitignore for personal vimrc
+
+# ignore bundle package
+bundle
+
