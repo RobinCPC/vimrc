@@ -25,10 +25,11 @@ Plugin 'majutsushi/tagbar'
 Plugin 'tpope/vim-fugitive'
 "Plugin 'Lokaltog/vim-powerline'
 Plugin 'bling/vim-airline'
-"Plugin 'scrooloose/syntastic'
+Plugin 'scrooloose/syntastic'
 "Plugin 'bronson/vim-trailing-whitespace'
 Plugin 'vim-scripts/Conque-GDB'
 Plugin 'altercation/vim-colors-solarized'
+Plugin 'airblade/vim-gitgutter'
 
 
 " All of your Plugins must be added before the following line
@@ -123,8 +124,17 @@ let g:ConqueTerm_CloseOnEnd=1       " close conque when program ends running
 let g:ConqueTerm_StartMessages=0    " display warning message if conqueTerm is configed incorrect
 
 " Solarized Setting
+
+let g:solarized_termtrans=1
+let g:solarized_termcolors=256
+let g:solarized_contrast="normal"
+let g:solarized_visibility="high"
+colorscheme solarized
+
 if has('gui_running')
-    set background=light
+    set background=dark     "light
+    colorscheme molokai
+    let g:airline_theme='molokai'
 else
     set background=light    "dark
 endif
@@ -132,16 +142,21 @@ endif
 if $COLORTERM == 'gnome-terminal'
     set t_Co=256
 end
-
-let g:solarized_termtrans=1
-let g:solarized_termcolors=256
-let g:solarized_contrast="normal"
-let g:solarized_visibility="high"
-colorscheme solarized
 " need to change built-in scheme of ubuntu terminal
 " set Background color: #FDF6E3 #002b36(dark)
 " set Text color:       #839496 #657b83(dark)
 " set Color-palette to Tango (temp)
+
+
+" Syntastic Setting
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
 
 
 " Common Configuration for Vim
