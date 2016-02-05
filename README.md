@@ -3,7 +3,7 @@ Personal VIM settings
 
 ## How to Install :
 
-1. Clone necessary repository
+### Clone necessary repository
 
 Open terminal (in $Home directory), then type following commands
 ``` bash
@@ -15,14 +15,14 @@ $ mkdir bundle
 $ git clone https://github.com/VundleVim/Vundle.vim.git
 ```
 
-2. make soft link to the relevant locations
+### Make soft link to the relevant locations
 
 In ~/dotfiles directory, use following commands:
 ``` bash
 $ ln -s ~/dotfiles/vim ~/.vim
 $ ln -s ~/dotfiles/vim/vimrc ~/.vimrc
 ```
-3. Install Vim package by Vundle
+### Install Vim package by Vundle
 
 In ~/dotfiles/vim/ directory, use following commands:
 ``` bash
@@ -33,13 +33,13 @@ when in vim editor, type:
 :PluginList
 :PluginInstall
 ```
-4. If tagbar not work, install ctag
+### If tagbar not work, install ctag
 
 In terminal:
 ``` bash
 $ sudo apt-get install ctags
 ```
-5. fix airline fonts
+### Fix airline fonts
 
 In terminal, and under $HOME directory
 ``` bash
@@ -57,7 +57,7 @@ Then, go to Teminal setting:
 
 
 
-* reference:
+#### reference:
 
 http://mirnazim.org/writings/vim-plugins-i-use/
 
