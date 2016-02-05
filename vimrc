@@ -24,12 +24,18 @@ Plugin 'majutsushi/tagbar'
 "Plugin 'kien/ctrlp.vim'
 Plugin 'tpope/vim-fugitive'
 "Plugin 'Lokaltog/vim-powerline'
-Plugin 'bling/vim-airline'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 Plugin 'scrooloose/syntastic'
 "Plugin 'bronson/vim-trailing-whitespace'
 Plugin 'vim-scripts/Conque-GDB'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'airblade/vim-gitgutter'
+
+"--------------
+"" Code Completions
+"--------------
+Plugin 'ervandew/supertab'
 
 
 " All of your Plugins must be added before the following line
@@ -158,6 +164,13 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
+" SuperTab
+filetype plugin on
+set omnifunc=syntaxcomplete#Complete
+let g:SuperTabDefaultCompletionType = 'context'
+"let g:SuperTabDefaultCompletionType = '<C-X><C-O>'
+"let g:SuperTabDefaultCompletionType = '<C-X><C-U>'
+let g:SuperTabRetainCompletionType=2
 
 " Common Configuration for Vim
 "================================
@@ -182,4 +195,4 @@ set noswapfile
 " don't redraw while executing macros (good performance config)
 set lazyredraw
 
-"colorscheme slate
+colorscheme molokai "slate
