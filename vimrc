@@ -207,3 +207,11 @@ set noswapfile
 set lazyredraw
 
 colorscheme molokai "atom-dark-256
+
+" add additional sytax setting for user-defined extention file type
+syntax on
+filetype on
+au BufNewFile,BufRead *.launch set filetype=xml
+au BufNewFile,BufRead *.urdf set filetype=xml
+au BufNewFile,BufRead *.md set filetype=markdown
+
