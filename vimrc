@@ -37,6 +37,7 @@ Plugin 'airblade/vim-gitgutter'
 "--------------
 Plugin 'ervandew/supertab'
 
+Plugin 'hdima/python-syntax'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -130,7 +131,6 @@ let g:ConqueTerm_CloseOnEnd=1       " close conque when program ends running
 let g:ConqueTerm_StartMessages=0    " display warning message if conqueTerm is configed incorrect
 
 " Solarized Setting
-
 let g:solarized_termtrans=1
 let g:solarized_termcolors=256
 let g:solarized_contrast="normal"
@@ -172,20 +172,31 @@ let g:SuperTabDefaultCompletionType = 'context'
 "let g:SuperTabDefaultCompletionType = '<C-X><C-U>'
 let g:SuperTabRetainCompletionType=2
 
+" Python-Syntax
+let python_highlight_all=1
+let python_highlight_builtins=1
+
 " Common Configuration for Vim
 "================================
-set number          " Show line number
-set cursorline      " Show underline in current cursor
-set nowrap          " not wrap the long line
+set number              " Show line number
+set cursorline          " Show underline in current cursor
+set nowrap              " not wrap the long line
 
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
 set expandtab
 
-set mouse=a         " Enable mouse to use (all mode)
-set scrolloff=2     " Keep space from top and bottom
-set laststatus=2    " Alway show status bar at bottom
+set mouse=a             " Enable mouse to use (all mode)
+set scrolloff=2         " Keep space from top and bottom
+set laststatus=2        " Alway show status bar at bottom
+
+set foldmethod=indent   " allow us fold on indent
+set foldlevel=99        " don't fold by default.
+
+""" Ssearching and Pattens
+set hlsearch        " Highlight search by default.
+set smarttab        " handle tab more intelligently.
 
 " don't backup
 set nobackup
@@ -195,4 +206,4 @@ set noswapfile
 " don't redraw while executing macros (good performance config)
 set lazyredraw
 
-colorscheme molokai "slate
+colorscheme molokai "atom-dark-256
