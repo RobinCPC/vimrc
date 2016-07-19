@@ -31,6 +31,7 @@ Plugin 'scrooloose/syntastic'
 Plugin 'vim-scripts/Conque-GDB'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'airblade/vim-gitgutter'
+Plugin 'vim-scripts/Gundo'
 
 "--------------
 "" Code Completions
@@ -119,7 +120,7 @@ let g:airline#extensions#tabline#left_alt_sep = '|'
 let g:airline#extensions#tabline#buffer_nr_show = 1
 
 " GVim Config
-set guifont=Source\ Code\ Pro\ for\ Powerline\ Regular\ 10
+set guifont=Source\ Code\ Pro\ for\ Powerline\ Regular\ 11
 set guioptions-=m   " remove Menu bar
 set guioptions-=T   " remove Tool bar
 set guioptions-=r   " remove Right bar
@@ -164,7 +165,7 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
-" SuperTab
+" SuperTab Setting
 filetype plugin on
 set omnifunc=syntaxcomplete#Complete
 let g:SuperTabDefaultCompletionType = 'context'
@@ -175,6 +176,12 @@ let g:SuperTabRetainCompletionType=2
 " Python-Syntax
 let python_highlight_all=1
 let python_highlight_builtins=1
+
+" Gondo Setting
+map <leader>g : GundoToggle<CR>
+let g:gundo_width = 30
+let g:gundo_preview_height = 20
+"let g:gundo_right = 0
 
 " Common Configuration for Vim
 "================================
@@ -197,6 +204,9 @@ set foldlevel=99        " don't fold by default.
 """ Ssearching and Pattens
 set hlsearch        " Highlight search by default.
 set smarttab        " handle tab more intelligently.
+
+
+"let mapleader=","   " not work
 
 " don't backup
 set nobackup
