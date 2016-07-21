@@ -32,6 +32,7 @@ Plugin 'vim-scripts/Conque-GDB'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'vim-scripts/Gundo'
+Plugin 'Raimondi/delimitMate'
 
 "--------------
 "" Code Completions

@@ -3,3 +3,6 @@
 # ignore bundle package
 bundle
 
+# ignore view folder
+view
+
