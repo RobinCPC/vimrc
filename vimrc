@@ -2,6 +2,8 @@ set nocompatible            " be iMproved, required
 filetype off                " required
 
 let mapleader="\<Space>"    " set `space` key as leader
+let maplocalleader=","
+
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -237,7 +239,7 @@ nnoremap <CR> G
 nnoremap <BS> gg
 
 " Type `<Space>o` to open a new file:
-"nnoremap <Leader>o :CtrlP<CR> " need CrtlP plug-in
+"nnoremap <Leader>o :CtrlP<CR> " need CrtlP plug-in or :FZF<CR>
 
 " Type `<Space>w` to save file
 nnoremap <Leader>w :w<CR>
@@ -246,12 +248,16 @@ nnoremap <Leader>s :wq<CR>
 " Remove trailing whitespaces
 nnoremap <silent> <Leader><Space> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>:w<CR>
 
+autocmd FileType python nnoremap <buffer> <localleader>c I#<esc>
+autocmd FileType javascript nnoremap <buffer> <localleader>c I//<esc>
+autocmd FileType cpp nnoremap <buffer> <localleader>c I//<esc>
 
 "===============================
 " Common Configuration for Vim
 "================================
 set number              " Show line number
 set cursorline          " Show underline in current cursor
+set cursorcolumn        " Show highlight in current column
 set nowrap              " not wrap the long line
 
 set tabstop=4

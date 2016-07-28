@@ -49,7 +49,7 @@ $ git clone https://github.com/powerline/fonts.git
 $ cd fonts/
 $ ./install.sh
 ```
-Then, go to Teminal setting: 
+Then, go to Teminal setting:
 
 	Edit->Profile Preferences
 	General->Font
@@ -63,3 +63,6 @@ http://mirnazim.org/writings/vim-plugins-i-use/
 
 https://github.com/powerline/fonts
 
+https://sheerun.net/2014/03/21/how-to-boost-your-vim-productivity/
+
+http://www.wklken.me/category/vim.html
