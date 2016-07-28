@@ -1,6 +1,7 @@
 set nocompatible            " be iMproved, required
 filetype off                " required
 
+let mapleader="\<Space>"    " set `space` key as leader
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -193,6 +194,60 @@ let g:gundo_width = 30
 let g:gundo_preview_height = 20
 "let g:gundo_right = 0
 
+" Snippets Setting
+" assuming you want to use snipmate snippet engine
+"ActivateAddons vim-snippets snipmate
+
+
+"===============================
+" Hotkey Setting
+"===============================
+
+" I can type :help on my own, thanks.  Protect your fat fingers from the evils of <F1>
+noremap <F1> <Esc>
+
+set pastetoggle=<F4>            "    when in insert mode, press <F4> to go to
+                                "    paste mode, where you can paste mass data
+                                "    that won't be autoindented
+
+" disbale paste mode when leaving insert mode
+au InsertLeave * set nopaste
+
+" Smart way to move between windows
+map <C-Down> <C-W>j
+map <C-Up> <C-W>k
+map <C-Left> <C-W>h
+map <C-Right> <C-W>l
+
+" Copy & paste to system clipboard with <Space>p and <Space>y:
+vmap <Leader>y "+y
+vmap <Leader>d "+d
+nmap <Leader>p "+p
+nmap <Leader>P "+P
+vmap <Leader>p "+p
+vmap <Leader>P "+P
+
+" Automatically jump to end of text you pasted:
+vnoremap <silent> y y`]
+vnoremap <silent> p p`]
+nnoremap <silent> p p`]
+
+" Hit `Enter` to go to end of file, and Hit `Backspace` to go to beginning of file.
+nnoremap <CR> G
+nnoremap <BS> gg
+
+" Type `<Space>o` to open a new file:
+"nnoremap <Leader>o :CtrlP<CR> " need CrtlP plug-in
+
+" Type `<Space>w` to save file
+nnoremap <Leader>w :w<CR>
+nnoremap <Leader>s :wq<CR>
+
+" Remove trailing whitespaces
+nnoremap <silent> <Leader><Space> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>:w<CR>
+
+
+"===============================
 " Common Configuration for Vim
 "================================
 set number              " Show line number
@@ -216,7 +271,6 @@ set hlsearch        " Highlight search by default.
 set smarttab        " handle tab more intelligently.
 
 
-"let mapleader=","   " not work
 
 " don't backup
 set nobackup
