@@ -36,6 +36,7 @@ Plugin 'altercation/vim-colors-solarized'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'vim-scripts/Gundo'
 Plugin 'Raimondi/delimitMate'
+Plugin 'thinca/vim-quickrun'
 
 "--------------
 "" Code Completions
@@ -200,6 +201,24 @@ let g:gundo_preview_height = 20
 " assuming you want to use snipmate snippet engine
 "ActivateAddons vim-snippets snipmate
 
+" Quickrun Setting
+let g:quickrun_config = {
+            \   "_" : {
+            \       "outputter" : "error",
+            \       "outputter/error/success"   : "buffer",
+            \       "outputter/error/error"     : "quickfix",
+            \       "outputter/buffer/split"    : ":rightbelow 8sp",
+            \       "outputter/buffer/close_on_empty" : 1,
+            \       "hook/time/enable" : 1
+            \   },
+            \   "cpp" : {
+            \       "cmdopt" : "-std=c++11 -Wall -pedantic"
+            \   },
+            \}
+
+let g:quickrun_no_default_key_mappings = 1
+"nmap <Leader>r <Plug>(quickrun)    " conflic GDB setting?
+map <F5> :QuickRun<CR>
 
 "===============================
 " Hotkey Setting
@@ -248,9 +267,17 @@ nnoremap <Leader>s :wq<CR>
 " Remove trailing whitespaces
 nnoremap <silent> <Leader><Space> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>:w<CR>
 
+" Single line comment depend on the type of file.
 autocmd FileType python nnoremap <buffer> <localleader>c I#<esc>
 autocmd FileType javascript nnoremap <buffer> <localleader>c I//<esc>
 autocmd FileType cpp nnoremap <buffer> <localleader>c I//<esc>
+
+" quickfix hoteky
+autocmd FileType qf nnoremap <silent> <buffer>q :quit<CR>
+autocmd FileType qf nnoremap <buffer> <localleader>c :.cc<CR>
+autocmd FileType qf nnoremap <buffer> <localleader>n :cn<CR>
+autocmd FileType qf nnoremap <buffer> <localleader>p :cN<CR>
+
 
 "===============================
 " Common Configuration for Vim
