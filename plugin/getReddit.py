@@ -1,19 +1,11 @@
-" A vim plugin with Python
-" source:
-" https://dzone.com/articles/how-write-vim-plugins-python
+"""
+    A vim plugin with Python.
+    To retrieve the content of the homepage of Reddit and display it in the
+    current buffer
+    source:
+    https://dzone.com/articles/how-write-vim-plugins-python
+"""
 
-if !has('python')
-    echo "Error: Required vim compiled with +python"
-    finish
-endif
-
-" Vim comments start with a double quote.
-" Function definition is VimL. We can mix VimL and Python in
-" function definition.
-
-function! Reddit()
-" start the python code like the next line.
-python << EOF
 # the vim module contains everything we need to interface with
 # python. We need urllib2 (or requests) for web service cosumer.
 import vim
@@ -65,10 +57,4 @@ try:
 
 except Exception, e:
     print e
-
-EOF
-" Here the python code is closed. We can continue writting VimL or python again.
-endfunction
-
-command! -nargs=0 Reddit call Reddit()
 
