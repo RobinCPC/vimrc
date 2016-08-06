@@ -322,3 +322,7 @@ au BufNewFile,BufRead *.launch set filetype=xml
 au BufNewFile,BufRead *.urdf set filetype=xml
 au BufNewFile,BufRead *.md set filetype=markdown
 
+" add additional (testing) plug0in
+source ./plugin/pyextend.vim
+source ./plugin/vimmit.vim
+
