@@ -1,5 +1,5 @@
 set nocompatible            " be iMproved, required
-filetype off                " required
+filetype off                " required, so vundle will be loaded properly
 
 let mapleader="\<Space>"    " set `space` key as leader
 let maplocalleader=","
@@ -53,8 +53,10 @@ Plugin 'honza/vim-snippets'
 
 
 " All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on    " required
+call vundle#end()           " required
+syntax on                   " syntax highlighting
+filetype on                 " try to detect filetypes
+filetype plugin indent on   " enable loading indent file for filetype
 " To ignore plugin indent changes, instead use:
 "filetype plugin on
 "
@@ -179,9 +181,14 @@ let g:syntastic_check_on_wq = 0
 let g:syntastic_cpp_compiler = 'clang++'
 let g:syntastic_cpp_compiler_options = ' -std=c++11 -stdlib=libc++'
 
-" SuperTab Setting
-filetype plugin on
+" SuperTab Setting and Omni-completion
+set completeopt=menuone,longest,preview
 set omnifunc=syntaxcomplete#Complete
+au FileType python set omnifunc=pythoncomplete#Complete
+au FileType javascript set omnifunc=javascriptcomplete#CompleteJS
+au FileType html set omnifunc=htmlcomplete#CompleteTags
+au FileType css set omnifunc=csscomplete#CompleteCSS
+au FileType xml set omnifunc=xmlcomplete#CompleteTags
 let g:SuperTabDefaultCompletionType = 'context'
 "let g:SuperTabDefaultCompletionType = '<C-X><C-O>'
 "let g:SuperTabDefaultCompletionType = '<C-X><C-U>'
@@ -324,8 +331,6 @@ set lazyredraw
 colorscheme molokai "atom-dark-256
 
 " add additional sytax setting for user-defined extention file type
-syntax on
-filetype on
 au BufNewFile,BufRead *.launch set filetype=xml
 au BufNewFile,BufRead *.urdf set filetype=xml
 au BufNewFile,BufRead *.md set filetype=markdown
