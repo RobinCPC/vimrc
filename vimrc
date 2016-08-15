@@ -330,6 +330,27 @@ au BufNewFile,BufRead *.launch set filetype=xml
 au BufNewFile,BufRead *.urdf set filetype=xml
 au BufNewFile,BufRead *.md set filetype=markdown
 
-" add additional (testing) plug0in
+""" Indentation for different file type
+" For Front-end or full stack (Web)
+au BufNewFile,BufRead *.js, *.html, *.css
+    \ set tabstop=2
+    \ set softtabstop=2
+    \ set shiftwidth=2
+
+" For Python (already as default)
+"au BufNewFile,BufRead *.py
+"    \ set tabstop=4
+"    \ set softtabstop=4
+"    \ set shiftwidth=4
+"    \ set textwidth=79
+"    \ set expandtab
+"    \ set autoindent
+"    \ set fileformat=unix
+
+" For ROS cpp coding style
+map \R <Esc>:set expandtab shiftwidth=2 tabstop=2 softtabstop=2<CR>
+" use `:retab!` for reformatting
+
+" add additional (testing) plug-in
 source ~/.vim/plugin/pyextend.vim
 
