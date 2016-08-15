@@ -66,3 +66,8 @@ https://github.com/powerline/fonts
 https://sheerun.net/2014/03/21/how-to-boost-your-vim-productivity/
 
 http://www.wklken.me/category/vim.html
+
+https://realpython.com/blog/python/vim-and-python-a-match-made-in-heaven/
+
+http://www.cnblogs.com/renrenqq/archive/2010/09/09/1813669.html
+

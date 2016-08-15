@@ -226,6 +226,8 @@ map <F5> :QuickRun<CR>
 
 " I can type :help on my own, thanks.  Protect your fat fingers from the evils of <F1>
 noremap <F1> <Esc>
+" A quick way from Insert to Normal (also can use <C-[> )
+inoremap jk <Esc>
 
 set pastetoggle=<F4>            "    when in insert mode, press <F4> to go to
                                 "    paste mode, where you can paste mass data
@@ -282,27 +284,33 @@ autocmd FileType qf nnoremap <buffer> <localleader>p :cN<CR>
 "===============================
 " Common Configuration for Vim
 "================================
+set encoding=utf-8      " utf-8 default  (others: big5, gbk, euc-jp)
 set number              " Show line number
 set cursorline          " Show underline in current cursor
 set cursorcolumn        " Show highlight in current column
 set nowrap              " not wrap the long line
-
-set tabstop=4
-set softtabstop=4
-set shiftwidth=4
-set expandtab
+set colorcolumn=80      " Display the limit of text width.
+"set textwidth=79        " Restrict text width.
 
 set mouse=a             " Enable mouse to use (all mode)
 set scrolloff=2         " Keep space from top and bottom
 set laststatus=2        " Alway show status bar at bottom
 
+""" Tab setting
+set tabstop=4           " Tab key indents X spaces at a time
+set softtabstop=4       " makes the spaces feel like real tabs
+set shiftwidth=4        " X spaces indents
+set expandtab           " Use spaces when the <Tab> key is pressed"
+" could use `:retab!` to reformat code to use tabs instead of space.
+
+""" Folding Setting
 set foldmethod=indent   " allow us fold on indent
 set foldlevel=99        " don't fold by default.
+"nnoremap <Space> za    " conflict with current map key.
 
-""" Ssearching and Pattens
+""" Searching and Pattens
 set hlsearch        " Highlight search by default.
 set smarttab        " handle tab more intelligently.
-
 
 
 " don't backup
