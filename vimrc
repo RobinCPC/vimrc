@@ -189,6 +189,7 @@ au FileType javascript set omnifunc=javascriptcomplete#CompleteJS
 au FileType html set omnifunc=htmlcomplete#CompleteTags
 au FileType css set omnifunc=csscomplete#CompleteCSS
 au FileType xml set omnifunc=xmlcomplete#CompleteTags
+"au BufNewFile,BufRead,BufEnter *.cpp,*.hpp set omnifunc=omni#cpp#complete#Main
 let g:SuperTabDefaultCompletionType = 'context'
 "let g:SuperTabDefaultCompletionType = '<C-X><C-O>'
 "let g:SuperTabDefaultCompletionType = '<C-X><C-U>'
@@ -358,4 +359,15 @@ map \R <Esc>:set expandtab shiftwidth=2 tabstop=2 softtabstop=2<CR>
 
 " add additional (testing) plug-in
 source ~/.vim/plugin/pyextend.vim
+
+" configure tags - add additional tags
+" source:  (will replaced by YCM later)
+" http://vim.wikia.com/wiki/C%2B%2B_code_completion
+set tags+=~/.vim/tags/cpp
+"set tags+=~/.vim/tags/gl
+"set tags+=~/.vim/tags/sdl
+"set tags+=~/.vim/tags/qt4
+" build tags of your own project with Ctrl-F12
+map <C-F12> :!ctags -R --sort=yes --c++-kinds=+pl --fields=+iaS --extra=+q --exclude=.git .<CR>
+" TODO: let F12 do ctags -R .   when filetype is not cpp
 
