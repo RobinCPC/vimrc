@@ -190,10 +190,19 @@ au FileType html set omnifunc=htmlcomplete#CompleteTags
 au FileType css set omnifunc=csscomplete#CompleteCSS
 au FileType xml set omnifunc=xmlcomplete#CompleteTags
 "au BufNewFile,BufRead,BufEnter *.cpp,*.hpp set omnifunc=omni#cpp#complete#Main
+" source: https://github.com/ervandew/supertab/issues/99
 let g:SuperTabDefaultCompletionType = 'context'
+let g:SuperTabContextDefaultCompletionType = "<C-P>"
+let g:SuperTabCompletionContexts = ['s:ContextText', 's:ContextDiscover']
+let g:SuperTabContextDiscoverDiscovery = ["&omnifunc:<C-X><C-O>"]
+autocmd FileType *
+            \ if &omnifunc != '' |
+            \ call SuperTabChain(&omnifunc, "<C-]>") |
+            \ call SuperTabSetDefaultCompletionType("<C-X><C-P>") |
+            \ endif
 "let g:SuperTabDefaultCompletionType = '<C-X><C-O>'
 "let g:SuperTabDefaultCompletionType = '<C-X><C-U>'
-let g:SuperTabRetainCompletionType=2
+"let g:SuperTabRetainCompletionType=2
 
 " Python-Syntax
 let python_highlight_all=1
