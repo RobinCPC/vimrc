@@ -217,6 +217,8 @@ let g:gundo_preview_height = 20
 " Snippets Setting
 " assuming you want to use snipmate snippet engine
 "ActivateAddons vim-snippets snipmate
+imap <C-J> <Plug>snipMateNextOrTrigger
+smap <C-J> <Plug>snipMateNextOrTrigger 
 
 " Quickrun Setting
 let g:quickrun_config = {
