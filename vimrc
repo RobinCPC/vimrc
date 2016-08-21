@@ -204,9 +204,20 @@ autocmd FileType *
 "let g:SuperTabDefaultCompletionType = '<C-X><C-U>'
 "let g:SuperTabRetainCompletionType=2
 
+
 " Python-Syntax
 let python_highlight_all=1
 let python_highlight_builtins=1
+" Self/Cls and Member Variables
+syn match pythonSelf   /\v(self|cls)/ contained
+syn match pythonSelf   /\v(self|cls)/
+syn match pythonDunder "__\w\+__"
+syn match pythonMember /\vself\.\w+(\w|\()@!/hs=s+5 contains=pythonSelf
+syn match pythonMember /\vcls\.\w+(\w|\()@!/hs=s+4 contains=pythonSelf
+hi link pythonSelf    Identifier
+hi link pythonDunder  Define
+hi link pythonMember Type
+
 
 " Gondo Setting
 map <leader>g : GundoToggle<CR>
@@ -214,11 +225,13 @@ let g:gundo_width = 30
 let g:gundo_preview_height = 20
 "let g:gundo_right = 0
 
+
 " Snippets Setting
 " assuming you want to use snipmate snippet engine
 "ActivateAddons vim-snippets snipmate
 imap <C-J> <Plug>snipMateNextOrTrigger
-smap <C-J> <Plug>snipMateNextOrTrigger 
+smap <C-J> <Plug>snipMateNextOrTrigger
+
 
 " Quickrun Setting
 let g:quickrun_config = {
