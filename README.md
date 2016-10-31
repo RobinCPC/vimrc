@@ -1,5 +1,6 @@
 # vimrc
 Personal VIM settings
+![vim_setting](https://raw.githubusercontent.com/RobinCPC/Testing_STL/master/vim_setting.jpg)
 
 ## How to Install :
 
