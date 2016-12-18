@@ -24,11 +24,12 @@ Plugin 'scrooloose/nerdtree'
 "Plugin 'humiaozuzu/TabBar'
 Plugin 'majutsushi/tagbar'
 "Plugin 'mileszs/ack.vim'
-"Plugin 'kien/ctrlp.vim'
+Plugin 'kien/ctrlp.vim'
 Plugin 'tpope/vim-fugitive'
 "Plugin 'Lokaltog/vim-powerline'
 Plugin 'bling/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
+Plugin 'rakr/vim-one'
 "Plugin 'scrooloose/syntastic'
 "Plugin 'bronson/vim-trailing-whitespace'
 "Plugin 'vim-scripts/Conque-GDB'
@@ -122,7 +123,7 @@ endif
 "=========================================
 
 "set t_Co=256        " show more color for airline
-let g:airline_theme='murmur'    " change theme of airline 'wombot'
+let g:airline_theme='bubblegum'    " change theme of airline 'wombot''murmur'
 
 " enable tabline
 let g:airline#extensions#tabline#enabled = 1
@@ -348,7 +349,7 @@ set noswapfile
 " don't redraw while executing macros (good performance config)
 set lazyredraw
 
-colorscheme molokai "atom-dark-256
+colorscheme bubblegum-256-dark "atom-dark-256 molokai tatami lucid 
 
 " add additional sytax setting for user-defined extention file type
 au BufNewFile,BufRead *.launch set filetype=xml
