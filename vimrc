@@ -233,6 +233,9 @@ let g:quickrun_config = {
             \   "cpp" : {
             \       "cmdopt" : "-std=c++11 -Wall -pedantic"
             \   },
+            \   "python" : {
+            \       "command" : "python"
+            \   },
             \}
 
 let g:quickrun_no_default_key_mappings = 1
