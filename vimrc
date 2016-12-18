@@ -27,12 +27,12 @@ Plugin 'majutsushi/tagbar'
 "Plugin 'kien/ctrlp.vim'
 Plugin 'tpope/vim-fugitive'
 "Plugin 'Lokaltog/vim-powerline'
-Plugin 'vim-airline/vim-airline'
+Plugin 'bling/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
-Plugin 'scrooloose/syntastic'
+"Plugin 'scrooloose/syntastic'
 "Plugin 'bronson/vim-trailing-whitespace'
-Plugin 'vim-scripts/Conque-GDB'
-Plugin 'altercation/vim-colors-solarized'
+"Plugin 'vim-scripts/Conque-GDB'
+"Plugin 'altercation/vim-colors-solarized'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'vim-scripts/Gundo'
 Plugin 'Raimondi/delimitMate'
@@ -369,7 +369,7 @@ map \R <Esc>:set expandtab shiftwidth=2 tabstop=2 softtabstop=2<CR>
 " use `:retab!` for reformatting
 
 " add additional (testing) plug-in
-source ~/.vim/plugin/pyextend.vim
+"source ~/.vim/plugin/pyextend.vim
 
 " configure tags - add additional tags
 " source:  (will replaced by YCM later)
