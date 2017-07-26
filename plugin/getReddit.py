@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
 """
     A vim plugin with Python.
     To retrieve the content of the homepage of Reddit and display it in the
