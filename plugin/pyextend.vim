@@ -43,7 +43,7 @@ command! MKD2HTML call Markdown2HTML()
 " function definition.
 
 function! Reddit()
-    pyfile ~/.vim/plugin/getReddit.py   " separate code in python file
+    pyfile ~/.vim/plugin/getReddit.py
 " start the python code like the next line.
 "python << EOF
 "EOF
