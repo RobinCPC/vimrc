@@ -53,6 +53,12 @@ endfunction
 command! -nargs=0 Reddit call Reddit()
 
 
+function! GetLeet()
+    pyfile ~/.vim/plugin/getLeet.py
+endfunction
+
+command! GETLEET call GetLeet()
+
 "function! GetHTML()
 "python << EOF
 "
