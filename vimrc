@@ -33,10 +33,12 @@ Plugin 'scrooloose/syntastic'
 "Plugin 'bronson/vim-trailing-whitespace'
 Plugin 'vim-scripts/Conque-GDB'
 Plugin 'altercation/vim-colors-solarized'
+Plugin 'crusoexia/vim-monokai'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'vim-scripts/Gundo'
 Plugin 'Raimondi/delimitMate'
 Plugin 'thinca/vim-quickrun'
+Plugin 'godlygeek/tabular'
 
 "--------------
 "" Code Completions
