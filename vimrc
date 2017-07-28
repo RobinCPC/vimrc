@@ -350,6 +350,8 @@ set foldlevel=99        " don't fold by default.
 """ Searching and Pattens
 set hlsearch        " Highlight search by default.
 set smarttab        " handle tab more intelligently.
+set incsearch       " search pattern when still typing
+nnoremap <Leader><CR> :noh<CR>
 
 
 " don't backup
@@ -360,7 +362,10 @@ set noswapfile
 " don't redraw while executing macros (good performance config)
 set lazyredraw
 
-colorscheme molokai "atom-dark-256
+" System Clipboard
+"set clipboard=unnamed
+
+colorscheme monokai "atom-dark-256
 
 " add additional sytax setting for user-defined extention file type
 au BufNewFile,BufRead *.launch set filetype=xml
