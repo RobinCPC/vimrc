@@ -184,6 +184,12 @@ let g:syntastic_check_on_wq = 0
 let g:syntastic_cpp_compiler = 'clang++'
 let g:syntastic_cpp_compiler_options = ' -std=c++11 -stdlib=libc++'
 
+let g:syntastic_mode_map = {
+    \ "mode": "passive",
+    \ "active_filetypes" : ["cpp", "javascript"],
+    \ "passive_filetypes" : ["ruby", "python"]}
+
+
 " SuperTab Setting and Omni-completion
 set completeopt=menuone,longest,preview
 set omnifunc=syntaxcomplete#Complete
