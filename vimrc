@@ -53,6 +53,7 @@ Plugin 'tomtom/tlib_vim'
 Plugin 'garbas/vim-snipmate'
 Plugin 'honza/vim-snippets'
 
+Plugin 'Valloric/YouCompleteMe'
 
 " All of your Plugins must be added before the following line
 call vundle#end()           " required
@@ -222,7 +223,7 @@ hi link pythonMember Type
 
 
 " Gondo Setting
-map <leader>g : GundoToggle<CR>
+map <leader>u : GundoToggle<CR>
 let g:gundo_width = 30
 let g:gundo_preview_height = 20
 "let g:gundo_right = 0
@@ -253,6 +254,23 @@ let g:quickrun_config = {
 let g:quickrun_no_default_key_mappings = 1
 "nmap <Leader>r <Plug>(quickrun)    " conflic GDB setting?
 map <F5> :QuickRun<CR>
+
+
+" YCM Setting
+let g:ycm_global_ycm_extra_conf= '~/dotfiles/.ycm_extra_conf.py'
+let g:ycm_error_symbol = '>>'
+let g:ycm_warning_symbol = '>*'
+
+" goto declare or definition
+nnoremap <leader>gl :YcmCompleter GoToDeclaration<CR>
+nnoremap <leader>gf :YcmCompleter GoToDefinition<CR>
+nnoremap <leader>gg :YcmCompleter GoToDefinitionElseDeclaration<CR>
+nmap <F6> :YcmDiags<CR>
+
+" Toggle YCM
+let g:ycm_min_num_of_chars_for_completion = 3
+let g:ycm_auto_trigger = 1
+
 
 "===============================
 " Hotkey Setting
