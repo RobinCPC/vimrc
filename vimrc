@@ -4,6 +4,7 @@ filetype off                " required, so vundle will be loaded properly
 let mapleader="\<Space>"    " set `space` key as leader
 let maplocalleader=","
 
+" ===== Plugin Management ===== {{{
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -57,12 +58,6 @@ Plugin 'Valloric/YouCompleteMe'
 
 " All of your Plugins must be added before the following line
 call vundle#end()           " required
-syntax on                   " syntax highlighting
-filetype on                 " try to detect filetypes
-filetype plugin indent on   " enable loading indent file for filetype
-" To ignore plugin indent changes, instead use:
-"filetype plugin on
-"
 " Brief help
 " :PluginList       - lists configured plugins
 " :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
@@ -70,7 +65,16 @@ filetype plugin indent on   " enable loading indent file for filetype
 " :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
 "
 " see :h vundle for more details or wiki for FAQ
+" Also could use `:scriptnames` to check what plugins have loaded
 " Put your non-Plugin stuff after this line
+" ===== End of Plugin Management ==== }}}
+
+syntax on                   " syntax highlighting
+filetype on                 " try to detect filetypes
+filetype plugin indent on   " enable loading indent file for filetype
+" To ignore plugin indent changes, instead use:
+"filetype plugin on
+"
 
 "-----------------
 "" Plugin settings
@@ -285,7 +289,7 @@ let g:ycm_auto_trigger = 1
 "===============================
 " Hotkey Setting
 "===============================
-
+" -------------------- {{{
 " I can type :help on my own, thanks.  Protect your fat fingers from the evils of <F1>
 noremap <F1> <Esc>
 " A quick way from Insert to Normal (also can use <C-[> )
@@ -335,6 +339,8 @@ nnoremap <Leader>s :wq<CR>
 
 " Remove trailing whitespaces
 nnoremap <silent> <Leader><Space> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>:w<CR>
+
+" --------------------  }}}
 
 " Single line comment depend on the type of file.
 augroup comment_setting
@@ -444,3 +450,11 @@ set tags+=~/.vim/tags/cpp
 map <C-F12> :!ctags -R --sort=yes --c++-kinds=+pl --fields=+iaS --extra=+q --exclude=.git .<CR>
 " TODO: let F12 do ctags -R .   when filetype is not cpp
 
+" Vimscript file settings -------------------- {{{
+augroup filetype_vim
+    autocmd!
+    autocmd FileType vim setlocal foldmethod=marker
+    autocmd FileType vim setlocal foldlevel=0
+augroup END
+" }}}
+"
