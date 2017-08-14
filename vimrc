@@ -193,12 +193,16 @@ let g:syntastic_mode_map = {
 " SuperTab Setting and Omni-completion
 set completeopt=menuone,longest,preview
 set omnifunc=syntaxcomplete#Complete
-au FileType python set omnifunc=pythoncomplete#Complete
-au FileType javascript set omnifunc=javascriptcomplete#CompleteJS
-au FileType html set omnifunc=htmlcomplete#CompleteTags
-au FileType css set omnifunc=csscomplete#CompleteCSS
-au FileType xml set omnifunc=xmlcomplete#CompleteTags
-"au BufNewFile,BufRead,BufEnter *.cpp,*.hpp set omnifunc=omni#cpp#complete#Main
+augroup omni_setting
+    autocmd!
+    autocmd FileType python     set omnifunc=pythoncomplete#Complete
+    autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
+    autocmd FileType html       set omnifunc=htmlcomplete#CompleteTags
+    autocmd FileType css        set omnifunc=csscomplete#CompleteCSS
+    autocmd FileType xml        set omnifunc=xmlcomplete#CompleteTags
+    "au BufNewFile,BufRead,BufEnter *.cpp,*.hpp set omnifunc=omni#cpp#complete#Main
+augroup END
+
 " source: https://github.com/ervandew/supertab/issues/99
 "#let g:SuperTabDefaultCompletionType = 'context'
 "#let g:SuperTabContextDefaultCompletionType = "<C-P>"
@@ -333,15 +337,29 @@ nnoremap <Leader>s :wq<CR>
 nnoremap <silent> <Leader><Space> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>:w<CR>
 
 " Single line comment depend on the type of file.
-autocmd FileType python nnoremap <buffer> <localleader>c I#<esc>
-autocmd FileType javascript nnoremap <buffer> <localleader>c I//<esc>
-autocmd FileType cpp nnoremap <buffer> <localleader>c I//<esc>
+augroup comment_setting
+    autocmd!
+    autocmd FileType python     nnoremap <buffer> <localleader>c I#<esc>
+    autocmd FileType javascript nnoremap <buffer> <localleader>c I//<esc>
+    autocmd FileType cpp        nnoremap <buffer> <localleader>c I//<esc>
+augroup END
 
 " quickfix hoteky
-autocmd FileType qf nnoremap <silent> <buffer>q :quit<CR>
-autocmd FileType qf nnoremap <buffer> <localleader>c :.cc<CR>
-autocmd FileType qf nnoremap <buffer> <localleader>n :cn<CR>
-autocmd FileType qf nnoremap <buffer> <localleader>p :cN<CR>
+augroup qfix_setting
+    autocmd!
+    autocmd FileType qf nnoremap <silent> <buffer>q :quit<CR>
+    autocmd FileType qf nnoremap <buffer> <localleader>c :.cc<CR>
+    autocmd FileType qf nnoremap <buffer> <localleader>n :cn<CR>
+    autocmd FileType qf nnoremap <buffer> <localleader>p :cN<CR>
+augroup END
+
+" add additional sytax setting for user-defined extention file type
+augroup syntax_setting
+    autocmd!
+    autocmd BufNewFile,BufRead *.launch set filetype=xml
+    autocmd BufNewFile,BufRead *.urdf   set filetype=xml
+    autocmd BufNewFile,BufRead *.md     set filetype=markdown
+augroup END
 
 
 "===============================
@@ -390,11 +408,6 @@ set lazyredraw
 "set clipboard=unnamed
 
 colorscheme monokai "atom-dark-256
-
-" add additional sytax setting for user-defined extention file type
-au BufNewFile,BufRead *.launch set filetype=xml
-au BufNewFile,BufRead *.urdf set filetype=xml
-au BufNewFile,BufRead *.md set filetype=markdown
 
 """ Indentation for different file type
 " For Front-end or full stack (Web)
