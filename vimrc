@@ -4,15 +4,8 @@ filetype off                " required, so vundle will be loaded properly
 let mapleader="\<Space>"    " set `space` key as leader
 let maplocalleader=","
 
-" ===== Plugin Management ===== {{{
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
-
-" let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
+" ===== vim-plug Plugin Management ===== {{{
+call plug#begin('~/.vim/plugged')
 
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
@@ -21,50 +14,47 @@ Plugin 'VundleVim/Vundle.vim'
 "--------------
 "" IDE features
 "--------------
-Plugin 'scrooloose/nerdtree'
-"Plugin 'humiaozuzu/TabBar'
-Plugin 'majutsushi/tagbar'
-"Plugin 'mileszs/ack.vim'
-"Plugin 'kien/ctrlp.vim'
-Plugin 'tpope/vim-fugitive'
-"Plugin 'Lokaltog/vim-powerline'
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-Plugin 'scrooloose/syntastic'
-"Plugin 'bronson/vim-trailing-whitespace'
-Plugin 'vim-scripts/Conque-GDB'
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'crusoexia/vim-monokai'
-Plugin 'airblade/vim-gitgutter'
-Plugin 'vim-scripts/Gundo'
-Plugin 'Raimondi/delimitMate'
-Plugin 'thinca/vim-quickrun'
-Plugin 'godlygeek/tabular'
+Plug 'scrooloose/nerdtree', {'on' : 'NERDTreeToggle'}
+"Plug 'humiaozuzu/TabBar'
+Plug 'majutsushi/tagbar'
+"Plug 'mileszs/ack.vim'
+"Plug 'kien/ctrlp.vim'
+Plug 'tpope/vim-fugitive'
+"Plug 'Lokaltog/vim-powerline'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+"Plug 'scrooloose/syntastic'
+"Plug 'bronson/vim-trailing-whitespace'
+Plug 'vim-scripts/Conque-GDB'
+Plug 'altercation/vim-colors-solarized'
+Plug 'crusoexia/vim-monokai'
+Plug 'airblade/vim-gitgutter'
+Plug 'vim-scripts/Gundo'
+Plug 'Raimondi/delimitMate'
+Plug 'thinca/vim-quickrun'
+Plug 'godlygeek/tabular'
+Plug 'morhetz/gruvbox'
 
 "--------------
 "" Code Completions
 "--------------
-""Plugin 'ervandew/supertab'
+""Plug 'ervandew/supertab'
 
-Plugin 'hdima/python-syntax'
+Plug 'hdima/python-syntax'
 
 
-Plugin 'MarcWeber/vim-addon-mw-utils'
-Plugin 'tomtom/tlib_vim'
-Plugin 'garbas/vim-snipmate'
-Plugin 'honza/vim-snippets'
+Plug 'MarcWeber/vim-addon-mw-utils'
+Plug 'tomtom/tlib_vim'
+Plug 'garbas/vim-snipmate'
+Plug 'honza/vim-snippets'
 
-Plugin 'Valloric/YouCompleteMe'
-
+"Plug 'Valloric/YouCompleteMe'
+Plug 'benekastah/neomake'
+Plug 'Shougo/deoplete.nvim', {'do' : 'UpdateRemotePlugins'}
+Plug 'zchee/deoplete-clang'
 " All of your Plugins must be added before the following line
-call vundle#end()           " required
-" Brief help
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-"
-" see :h vundle for more details or wiki for FAQ
+call plug#end()
+" use `vsplit autoload/plug.vim` to see more details or Wiki for FAQ
 " Also could use `:scriptnames` to check what plugins have loaded
 " Put your non-Plugin stuff after this line
 " ===== End of Plugin Management ==== }}}
@@ -72,6 +62,8 @@ call vundle#end()           " required
 syntax on                   " syntax highlighting
 filetype on                 " try to detect filetypes
 filetype plugin indent on   " enable loading indent file for filetype
+let g:python_host_prog = '/usr/bin/python2'
+let g:python3_host_prog = '/usr/bin/python3'
 " To ignore plugin indent changes, instead use:
 "filetype plugin on
 "
@@ -79,6 +71,43 @@ filetype plugin indent on   " enable loading indent file for filetype
 "-----------------
 "" Plugin settings
 "-----------------
+
+" deoplete Setting
+let g:deoplete#enable_at_startup=1
+" tab completion
+inoremap <silent><expr> <Tab> pumvisible() ? "<C-n>" : "<Tab>"
+" Close the documentation window when completion is done
+autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
+
+" deoplete-clang
+let g:deoplete#sources#clang#libclang_path = '/usr/lib/llvm-3.8/lib/libclang.so.1'
+let g:deoplete#sources#clang#clang_header = '/usr/lib/llvm-3.8/lib/clang'
+
+
+" Neomake Setting
+augroup NeomakeGroup
+    autocmd!
+    autocmd BufWritePost * Neomake " run neomake when writing to file
+augroup END
+let g:neomake_open_list = 2 " auto open/close error list
+let g:neomake_vim_enabled_makers = ['vint'] " pip3 install vint
+let g:neomake_c_enabled_makers = ['gcc'] " clang avail
+let g:neomake_cpp_enabled_makers = ['gcc'] " clang aval
+let g:neomake_python_enabled_makers = ['python']
+let g:neomake_html_enabled_makers = ['tidy'] " apt install tidy
+let g:neomake_javascript_enabled_makers = ['jshint'] " npm install jshint -g
+let g:neomake_css_enabled_makers = ['csslint'] " npm install csslint -g
+let g:neomake_json_enabled_makers = ['jsonlint'] " npm install jsonlint -g
+let g:neomake_go_enabled_makers = ['go']
+
+let g:neomake_warning_sign = {
+            \ 'text': 'W',
+            \ 'texthl': 'WarningMsg',
+            \ }
+let g:neomake_error_sign = {
+            \ 'text': '>>',
+            \ 'texthl': 'ErrorMsg',
+            \ }
 
 " NerdTree Setting
 let NERDChristmasTree=1
@@ -176,22 +205,23 @@ end
 " set Color-palette to Tango (temp)
 
 
-" Syntastic Setting
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-let g:syntastic_cpp_compiler = 'clang++'
-let g:syntastic_cpp_compiler_options = ' -std=c++11 -stdlib=libc++'
-
-let g:syntastic_mode_map = {
-    \ "mode": "passive",
-    \ "active_filetypes" : ["cpp", "javascript"],
-    \ "passive_filetypes" : ["ruby", "python"]}
+"" Syntastic Setting {{{
+"set statusline+=%#warningmsg#
+"set statusline+=%{SyntasticStatuslineFlag()}
+"set statusline+=%*
+"
+"let g:syntastic_always_populate_loc_list = 1
+"let g:syntastic_auto_loc_list = 1
+"let g:syntastic_check_on_open = 1
+"let g:syntastic_check_on_wq = 0
+"let g:syntastic_cpp_compiler = 'clang++'
+"let g:syntastic_cpp_compiler_options = ' -std=c++11 -stdlib=libc++'
+"
+"let g:syntastic_mode_map = {
+"    \ "mode": "passive",
+"    \ "active_filetypes" : ["cpp", "javascript"],
+"    \ "passive_filetypes" : ["ruby", "python"]}
+" }}}
 
 
 " SuperTab Setting and Omni-completion
@@ -270,20 +300,21 @@ let g:quickrun_no_default_key_mappings = 1
 map <F5> :QuickRun<CR>
 
 
-" YCM Setting
-let g:ycm_global_ycm_extra_conf= '~/dotfiles/.ycm_extra_conf.py'
-let g:ycm_error_symbol = '>>'
-let g:ycm_warning_symbol = '>*'
-
-" goto declare or definition
-nnoremap <leader>gl :YcmCompleter GoToDeclaration<CR>
-nnoremap <leader>gf :YcmCompleter GoToDefinition<CR>
-nnoremap <leader>gg :YcmCompleter GoToDefinitionElseDeclaration<CR>
-nmap <F6> :YcmDiags<CR>
-
-" Toggle YCM
-let g:ycm_min_num_of_chars_for_completion = 3
-let g:ycm_auto_trigger = 1
+"" YCM Setting {{{
+"let g:ycm_global_ycm_extra_conf= '~/dotfiles/.ycm_extra_conf.py'
+"let g:ycm_error_symbol = '>>'
+"let g:ycm_warning_symbol = '>*'
+"
+"" goto declare or definition
+"nnoremap <leader>gl :YcmCompleter GoToDeclaration<CR>
+"nnoremap <leader>gf :YcmCompleter GoToDefinition<CR>
+"nnoremap <leader>gg :YcmCompleter GoToDefinitionElseDeclaration<CR>
+"nmap <F6> :YcmDiags<CR>
+"
+"" Toggle YCM
+"let g:ycm_min_num_of_chars_for_completion = 3
+"let g:ycm_auto_trigger = 1
+"}}}
 
 
 "===============================

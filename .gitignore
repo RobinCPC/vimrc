@@ -1,7 +1,13 @@
 ### gitignore for personal vimrc
 
-# ignore bundle package
+# ignore bundle package (Vundle)
 bundle
+
+# ignore plugged packege (vim-plug)
+plugged
+
+# ignore softlink for nvim config
+init.vim
 
 # ignore view folder
 view
