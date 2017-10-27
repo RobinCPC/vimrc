@@ -37,9 +37,20 @@ when in vim editor, type:
 ### If tagbar not work, install ctag
 
 In terminal:
+- Ubuntu/Debian
 ``` bash
 $ sudo apt-get install ctags
 ```
+
+- macOS (use Homebrew)
+``` bash
+$ brew install ctags
+```
+Then, Homebrew will install ctags in `/usr/local/bin/`
+
+note: macOS has another program also name ctags in `/usr/bin/`, may need to add   
+`export PATH=/usr/local/bin:$PATH` to your `.bash_profile` or `,zshrc`
+
 ### Fix airline fonts
 
 In terminal, and under $HOME directory
@@ -72,3 +83,4 @@ https://realpython.com/blog/python/vim-and-python-a-match-made-in-heaven/
 
 http://www.cnblogs.com/renrenqq/archive/2010/09/09/1813669.html
 
+http://scholarslab.org/research-and-development/code-spelunking-with-ctags-and-vim/
