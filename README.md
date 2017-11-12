@@ -6,60 +6,65 @@ Personal VIM settings
 
 ### Clone necessary repository
 
-Open terminal (in $Home directory), then type following commands
+Open terminal (in $Home directory), then type following commands:
 ``` bash
-$ mkdir dotfiles
-$ cd dotfiles
-$ git clone https://github.com/RobinCPC/vimrc.git vim
-$ cd vim
-$ mkdir bundle
-$ git clone https://github.com/VundleVim/Vundle.vim.git
+# move to home directory and create dotfile directory
+cd $HOME
+mkdir -p dotfiles && cd dotfiles
+# clone vimrc
+git clone https://github.com/RobinCPC/vimrc.git vim
+cd vim
+# create bundle directory and clone Vundle plugin
+mkdir -p bundle && cd bundle
+git clone https://github.com/VundleVim/Vundle.vim.git
 ```
 
 ### Make soft link to the relevant locations
 
-In ~/dotfiles directory, use following commands:
+In ~/dotfiles directory, use following commands to add softlink:
 ``` bash
-$ ln -s ~/dotfiles/vim ~/.vim
-$ ln -s ~/dotfiles/vim/vimrc ~/.vimrc
+ln -s ~/dotfiles/vim ~/.vim
+ln -s ~/dotfiles/vim/vimrc ~/.vimrc
 ```
+
 ### Install Vim package by Vundle
 
 In ~/dotfiles/vim/ directory, use following commands:
 ``` bash
-$ vim vimrc
+vim vimrc
 ```
 when in vim editor, type:
 ``` vim
 :PluginList
 :PluginInstall
 ```
+
 ### If tagbar not work, install ctag
 
 In terminal:
 - Ubuntu/Debian
 ``` bash
-$ sudo apt-get install ctags
+sudo apt-get install ctags
 ```
 
 - macOS (use Homebrew)
 ``` bash
-$ brew install ctags
+brew install ctags
 ```
 Then, Homebrew will install ctags in `/usr/local/bin/`
 
-note: macOS has another program also name ctags in `/usr/bin/`, may need to add   
+note: macOS has another program is also named ctags (different software) in `/usr/bin/`, may need to add   
 `export PATH=/usr/local/bin:$PATH` to your `.bash_profile` or `,zshrc`
 
 ### Fix airline fonts
 
 In terminal, and under $HOME directory
 ``` bash
-$ mkdir .fonts
-$ cd .fonts/
-$ git clone https://github.com/powerline/fonts.git
-$ cd fonts/
-$ ./install.sh
+cd $HOME
+mkdir -p .fonts && cd .fonts/
+git clone https://github.com/powerline/fonts.git
+cd fonts/
+./install.sh
 ```
 Then, go to Teminal setting:
 
