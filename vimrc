@@ -49,6 +49,7 @@ Plugin 'godlygeek/tabular'
 "Plugin 'ervandew/supertab'
 
 Plugin 'hdima/python-syntax'
+Plugin 'octol/vim-cpp-enhanced-highlight'
 
 
 Plugin 'MarcWeber/vim-addon-mw-utils'
@@ -58,6 +59,13 @@ Plugin 'honza/vim-snippets'
 
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'Shougo/echodoc.vim'
+
+
+"--------------
+"" Web Development
+"--------------
+Plugin 'tpope/vim-surround'
+Plugin 'mattn/emmet-vim'
 
 "--------------
 "" File type glyphs/icons
@@ -266,6 +274,12 @@ hi link pythonDunder  Define
 hi link pythonMember Type
 
 
+" cpp-enhanced-highlight setting
+let g:cpp_class_scope_highlight = 1
+let g:cpp_member_variable_highlight = 1
+let g:cpp_class_decl_highlight = 1
+
+
 " Gondo Setting
 map <leader>u : GundoToggle<CR>
 let g:gundo_width = 30
@@ -315,12 +329,20 @@ nmap <F6> :YcmDiags<CR>
 let g:ycm_min_num_of_chars_for_completion = 3
 let g:ycm_auto_trigger = 1
 
+" echodoc Setting
+set noshowmode
+let g:echodoc_enable_at_startup = 1
+
 " DevIcons Setting
 let g:WebDevIconsUnicodeDecorateFolderNodes = 1
 let g:webdevicons_conceal_nerdtree_brackets = 1
 "let g:WebDevIconsUnicodeGlyphDoubleWidth = 1
 "let g:WebDevIconsNerdTreeAfterGlyphPadding = '  '
-let g:NERDTreeHighlightFolders = 1 " enables folder icon highlighting using exact match
+"let g:WebDevIconsUnicodeDecorateFolderNodeDefaultSymbol = ' '
+let g:DevIconsDefaultFolderOpenSymbol = ''
+
+" Enables folder icon highlighting using exact match
+let g:NERDTreeHighlightFolders = 1 " only highlights icon
 "let g:NERDTreeHighlightFoldersFullName = 1 " highlights the folder name
 
 "===============================

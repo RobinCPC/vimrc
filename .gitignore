@@ -3,6 +3,9 @@
 # ignore bundle package
 bundle
 
-# ignore view folder
+# ignore view, tag folder
 view
+tags
 
+# ignore some record files
+.netrwhist
