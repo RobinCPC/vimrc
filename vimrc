@@ -30,11 +30,13 @@ Plugin 'tpope/vim-fugitive'
 "Plugin 'Lokaltog/vim-powerline'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
-Plugin 'scrooloose/syntastic'
+"Plugin 'scrooloose/syntastic'
+Plugin 'w0rp/ale'
 "Plugin 'bronson/vim-trailing-whitespace'
 Plugin 'vim-scripts/Conque-GDB'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'crusoexia/vim-monokai'
+Plugin 'morhetz/gruvbox'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'vim-scripts/Gundo'
 Plugin 'Raimondi/delimitMate'
@@ -44,7 +46,7 @@ Plugin 'godlygeek/tabular'
 "--------------
 "" Code Completions
 "--------------
-""Plugin 'ervandew/supertab'
+"Plugin 'ervandew/supertab'
 
 Plugin 'hdima/python-syntax'
 
@@ -55,6 +57,13 @@ Plugin 'garbas/vim-snipmate'
 Plugin 'honza/vim-snippets'
 
 Plugin 'Valloric/YouCompleteMe'
+Plugin 'Shougo/echodoc.vim'
+
+"--------------
+"" File type glyphs/icons
+"--------------
+Plugin 'ryanoasis/vim-devicons'
+Plugin 'tiagofumo/vim-nerdtree-syntax-highlight'
 
 " All of your Plugins must be added before the following line
 call vundle#end()           " required
@@ -176,22 +185,43 @@ end
 " set Color-palette to Tango (temp)
 
 
-" Syntastic Setting
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+"" Syntastic Setting {{{
+"set statusline+=%#warningmsg#
+"set statusline+=%{SyntasticStatuslineFlag()}
+"set statusline+=%*
+"
+"let g:syntastic_always_populate_loc_list = 1
+"let g:syntastic_auto_loc_list = 1
+"let g:syntastic_check_on_open = 1
+"let g:syntastic_check_on_wq = 0
+"let g:syntastic_cpp_compiler = 'clang++'
+"let g:syntastic_cpp_compiler_options = ' -std=c++11 -stdlib=libc++'
+"
+"let g:syntastic_mode_map = {
+"    \ "mode": "passive",
+"    \ "active_filetypes" : ["cpp", "javascript"],
+"    \ "passive_filetypes" : ["ruby", "python"]}
+" }}}
 
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-let g:syntastic_cpp_compiler = 'clang++'
-let g:syntastic_cpp_compiler_options = ' -std=c++11 -stdlib=libc++'
 
-let g:syntastic_mode_map = {
-    \ "mode": "passive",
-    \ "active_filetypes" : ["cpp", "javascript"],
-    \ "passive_filetypes" : ["ruby", "python"]}
+" ALE Setting
+let g:ale_open_list = 'on_save'             " show quickfix or locallist window
+let g:ale_list_window_size = 5
+let g:ale_set_loclist = 0                   " not use locallist show repeat reuslt
+let g:ale_set_quickfix = 1                  " for different lint.
+let g:ale_lint_delay = 500                  " lint after 500 ms.
+let g:ale_lint_on_text_changed = 'normal'   " 'always' kind of annoy
+let g:ale_lint_on_insert_leave = 1
+let g:airline#extentions#ale#enabled = 0
+let g:ale_linters = {
+            \ 'python': ['pycodestyle', 'pyflakes'],
+            \ 'cpp' : ['gcc','cppcheck','clang']
+            \       }
+" ALE C++ confiure
+let g:ale_cpp_clang_options = '-std=c++14 -Wall -I/usr/local/opt/openssl/include'
+let g:ale_cpp_gcc_executable = 'g++-7'
+let g:ale_cpp_gcc_options = '-std=c++14 -Wall -I/usr/local/opt/openssl/include'
+let g:ale_cpp_cppcheck_options = ''
 
 
 " SuperTab Setting and Omni-completion
@@ -207,19 +237,19 @@ augroup omni_setting
     "au BufNewFile,BufRead,BufEnter *.cpp,*.hpp set omnifunc=omni#cpp#complete#Main
 augroup END
 
-" source: https://github.com/ervandew/supertab/issues/99
-"#let g:SuperTabDefaultCompletionType = 'context'
-"#let g:SuperTabContextDefaultCompletionType = "<C-P>"
-"#let g:SuperTabCompletionContexts = ['s:ContextText', 's:ContextDiscover']
-"#let g:SuperTabContextDiscoverDiscovery = ["&omnifunc:<C-X><C-O>"]
-"#autocmd FileType *
-"#            \ if &omnifunc != '' |
-"#            \ call SuperTabChain(&omnifunc, "<C-]>") |
-"#            \ call SuperTabSetDefaultCompletionType("<C-X><C-P>") |
-"#            \ endif
-"let g:SuperTabDefaultCompletionType = '<C-X><C-O>'
-"let g:SuperTabDefaultCompletionType = '<C-X><C-U>'
-"let g:SuperTabRetainCompletionType=2
+"" source: https://github.com/ervandew/supertab/issues/99
+"let g:SuperTabDefaultCompletionType = 'context'
+"let g:SuperTabContextDefaultCompletionType = "<C-P>"
+"let g:SuperTabCompletionContexts = ['s:ContextText', 's:ContextDiscover']
+"let g:SuperTabContextDiscoverDiscovery = ["&omnifunc:<C-X><C-O>"]
+"autocmd FileType *
+"            \ if &omnifunc != '' |
+"            \ call SuperTabChain(&omnifunc, "<C-]>") |
+"            \ call SuperTabSetDefaultCompletionType("<C-X><C-P>") |
+"            \ endif
+""let g:SuperTabDefaultCompletionType = '<C-X><C-O>'
+""let g:SuperTabDefaultCompletionType = '<C-X><C-U>'
+""let g:SuperTabRetainCompletionType=2
 
 
 " Python-Syntax
@@ -285,6 +315,13 @@ nmap <F6> :YcmDiags<CR>
 let g:ycm_min_num_of_chars_for_completion = 3
 let g:ycm_auto_trigger = 1
 
+" DevIcons Setting
+let g:WebDevIconsUnicodeDecorateFolderNodes = 1
+let g:webdevicons_conceal_nerdtree_brackets = 1
+"let g:WebDevIconsUnicodeGlyphDoubleWidth = 1
+"let g:WebDevIconsNerdTreeAfterGlyphPadding = '  '
+let g:NERDTreeHighlightFolders = 1 " enables folder icon highlighting using exact match
+"let g:NERDTreeHighlightFoldersFullName = 1 " highlights the folder name
 
 "===============================
 " Hotkey Setting
