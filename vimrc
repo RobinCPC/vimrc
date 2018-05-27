@@ -350,8 +350,9 @@ let g:ycm_semantic_triggers =  {
 
 
 " echodoc Setting
-set noshowmode
+set cmdheight=2
 let g:echodoc_enable_at_startup = 1
+
 
 " DevIcons Setting
 let g:WebDevIconsUnicodeDecorateFolderNodes = 1
@@ -382,7 +383,7 @@ set pastetoggle=<F4>            "    when in insert mode, press <F4> to go to
                                 "    that won't be autoindented
 
 " disbale paste mode when leaving insert mode
-au InsertLeave * set nopaste
+autocmd InsertLeave * set nopaste
 
 " Smart way to move between windows
 map <C-Down> <C-W>j
@@ -462,6 +463,7 @@ augroup END
 set encoding=utf-8      " utf-8 default  (others: big5, gbk, euc-jp)
 set fencs=utf-8,big5    " fileencodings: utf-8 default (others:gbk,ucs-bom)
 set showcmd
+set noshowmode          " not show `Insert,Normal` at bottom left
 set wildmenu
 set number              " Show line number
 set relativenumber      " Show relative line number
@@ -509,10 +511,8 @@ colorscheme monokai "atom-dark-256
 
 """ Indentation for different file type
 " For Front-end or full stack (Web)
-au BufNewFile,BufRead *.js, *.html, *.css
-    \ set tabstop=2
-    \ set softtabstop=2
-    \ set shiftwidth=2
+autocmd FileType javascript,html,css
+    \ setlocal tabstop=2 softtabstop=2 shiftwidth=2
 
 " For Python (already as default)
 "au BufNewFile,BufRead *.py
