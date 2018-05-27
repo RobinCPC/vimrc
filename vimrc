@@ -115,7 +115,7 @@ if !exists('g:airline_symbols')
     let g:airline_symbols = {}
 endif
 
-"" If system setting are correct and intall font from powerline
+"" If system setting are correct and intall font from powerline {{{
 "" may not this following symbol setting
 "=========================================
 " unicode symbols
@@ -143,7 +143,7 @@ endif
 
 "let g:airline_symbols.space = '"\ua0"
 "set fillchars+=stl:\ ,stlnc:\          " if see ^^^^^ in the statusline
-"=========================================
+"========================================= }}}
 
 "set t_Co=256        " show more color for airline
 let g:airline_theme='murmur'    " change theme of airline 'wombot'
@@ -203,11 +203,11 @@ end
 "let g:syntastic_check_on_open = 1
 "let g:syntastic_check_on_wq = 0
 "let g:syntastic_cpp_compiler = 'clang++'
-"let g:syntastic_cpp_compiler_options = ' -std=c++11 -stdlib=libc++'
+"let g:syntastic_cpp_compiler_options = ' -std=c++14 -stdlib=libc++'
 "
 "let g:syntastic_mode_map = {
 "    \ "mode": "passive",
-"    \ "active_filetypes" : ["cpp", "javascript"],
+"    \ "active_filetypes" : ["cpp", "javascript", "html"],
 "    \ "passive_filetypes" : ["ruby", "python"]}
 " }}}
 
@@ -266,7 +266,7 @@ let python_highlight_builtins=1
 " Self/Cls and Member Variables
 syn match pythonSelf   /\v(self|cls)/ contained
 syn match pythonSelf   /\v(self|cls)/
-syn match pythonDunder "__\w\+__"
+syn match pythonDunder '__\w\+__'
 syn match pythonMember /\vself\.\w+(\w|\()@!/hs=s+5 contains=pythonSelf
 syn match pythonMember /\vcls\.\w+(\w|\()@!/hs=s+4 contains=pythonSelf
 hi link pythonSelf    Identifier
@@ -305,7 +305,7 @@ let g:quickrun_config = {
             \       "hook/time/enable" : 1
             \   },
             \   "cpp" : {
-            \       "cmdopt" : "-std=c++11 -Wall -pedantic"
+            \       "cmdopt" : "-std=c++14 -lpthread -Wall -pedantic"
             \   },
             \}
 
@@ -316,6 +316,7 @@ map <F5> :QuickRun<CR>
 
 " YCM Setting
 let g:ycm_global_ycm_extra_conf= '~/dotfiles/.ycm_extra_conf.py'
+let g:ycm_python_binary_path = 'python'
 let g:ycm_error_symbol = '>>'
 let g:ycm_warning_symbol = '>*'
 
@@ -326,8 +327,27 @@ nnoremap <leader>gg :YcmCompleter GoToDefinitionElseDeclaration<CR>
 nmap <F6> :YcmDiags<CR>
 
 " Toggle YCM
+let g:ycm_collect_identifiers_from_tags_files = 1
 let g:ycm_min_num_of_chars_for_completion = 3
 let g:ycm_auto_trigger = 1
+let g:ycm_goto_buffer_command = 'vertical-split'
+" get from skywind need to tune for myself
+let g:ycm_add_preview_to_completeopt = 0
+let g:ycm_show_diagnostics_ui = 0
+let g:ycm_server_log_level = 'info'
+let g:ycm_min_num_identifier_candidate_chars = 2
+let g:ycm_collect_identifiers_from_comments_and_strings = 1
+let g:ycm_complete_in_strings=1
+"let g:ycm_key_invoke_completion = '<c-u>'
+set completeopt=menu,menuone
+ 
+"noremap <c-u> <NOP>
+ 
+let g:ycm_semantic_triggers =  {
+            \ 'c,cpp,python,java,go,erlang,perl': ['re!\w{2}'],
+            \ 'cs,lua,javascript': ['re!\w{2}'],
+            \ }
+
 
 " echodoc Setting
 set noshowmode
@@ -347,6 +367,9 @@ let g:NERDTreeHighlightFolders = 1 " only highlights icon
 
 "===============================
 " Hotkey Setting
+"
+" You can use following command to check if ohter plugin already use it.
+" example -> :verbose imap <tab>
 "===============================
 " -------------------- {{{
 " I can type :help on my own, thanks.  Protect your fat fingers from the evils of <F1>
@@ -372,6 +395,12 @@ nnoremap <C-K> <C-W>k
 nnoremap <C-H> <C-W>h
 nnoremap <C-L> <C-W>l
 
+"Window Resizing
+nmap <right> : 3wincmd > <cr>
+nmap <left>  : 3wincmd < <cr>
+nmap <up>    : 3wincmd + <cr>
+nmap <down>  : 3wincmd - <cr>
+
 " Copy & paste to system clipboard with <Space>p and <Space>y:
 vmap <Leader>y "+y
 vmap <Leader>d "+d
@@ -386,7 +415,7 @@ vnoremap <silent> p p`]
 nnoremap <silent> p p`]
 
 " Hit `Enter` to go to end of file, and Hit `Backspace` to go to beginning of file.
-nnoremap <CR> G
+"nnoremap <CR> G
 nnoremap <BS> gg
 
 " Type `<Space>o` to open a new file:
@@ -431,7 +460,11 @@ augroup END
 " Common Configuration for Vim
 "================================
 set encoding=utf-8      " utf-8 default  (others: big5, gbk, euc-jp)
+set fencs=utf-8,big5    " fileencodings: utf-8 default (others:gbk,ucs-bom)
+set showcmd
+set wildmenu
 set number              " Show line number
+set relativenumber      " Show relative line number
 set cursorline          " Show underline in current cursor
 set cursorcolumn        " Show highlight in current column
 set nowrap              " not wrap the long line
