@@ -510,9 +510,14 @@ set lazyredraw
 colorscheme monokai "atom-dark-256
 
 """ Indentation for different file type
-" For Front-end or full stack (Web)
-autocmd FileType javascript,html,css
-    \ setlocal tabstop=2 softtabstop=2 shiftwidth=2
+augroup indent_setting
+    autocmd!
+    autocmd FileType c,h,cpp,hpp
+          \ setlocal tabstop=2 softtabstop=2 shiftwidth=2
+    " For Front-end or full stack (Web)
+    autocmd FileType javascript,html,css
+          \ setlocal tabstop=2 softtabstop=2 shiftwidth=2
+augroup END
 
 " For Python (already as default)
 "au BufNewFile,BufRead *.py
