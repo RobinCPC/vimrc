@@ -213,7 +213,7 @@ end
 
 
 " ALE Setting
-let g:ale_open_list = 'on_save'             " show quickfix or locallist window
+let b:ale_open_list = 0             " show quickfix or locallist window. Previously use 'on_save'
 let g:ale_list_window_size = 5
 let g:ale_set_loclist = 0                   " not use locallist show repeat reuslt
 let g:ale_set_quickfix = 1                  " for different lint.
@@ -226,10 +226,15 @@ let g:ale_linters = {
             \ 'cpp' : ['gcc','cppcheck','clang']
             \       }
 " ALE C++ confiure
-let g:ale_cpp_clang_options = '-std=c++14 -Wall -I/usr/local/opt/openssl/include'
+let s:cpp_options_list = ['-std=c++14 -Wall -Wextra',
+                        \ '-I/usr/local/include/eigen3',
+                        \ '-I/usr/local/opt/openssl/include',
+                        \ '-I./src'
+                        \]
+let g:ale_cpp_clang_options = join(s:cpp_options_list, ' ')
 let g:ale_cpp_gcc_executable = 'g++-7'
-let g:ale_cpp_gcc_options = '-std=c++14 -Wall -I/usr/local/opt/openssl/include'
-let g:ale_cpp_cppcheck_options = ''
+let g:ale_cpp_gcc_options = join(s:cpp_options_list, ' ')
+let g:ale_cpp_cppcheck_options = '--enable=all'
 
 
 " SuperTab Setting and Omni-completion
