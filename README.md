@@ -23,7 +23,7 @@ git clone https://github.com/VundleVim/Vundle.vim.git
 
 In ~/dotfiles directory, use following commands to add softlink:
 ``` bash
-ln -s ~/dotfiles/vim ~/.vim
+ln -s ~/dotfiles/vim/ ~/.vim
 ln -s ~/dotfiles/vim/vimrc ~/.vimrc
 ```
 
