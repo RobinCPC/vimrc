@@ -72,6 +72,18 @@ Then, go to Teminal setting:
 	General->Font
 	Change default (monospace) to DejaVu Sans Mono for Powerline | 12
 
+### If use YouCompleteMe (YCM) as completer
+
+Need compile YCM and upgrade some python package (cryptography, pyOpenSSL)
+``` bash
+# Go to where YCM installed
+cd ~/.vim/bundle/YouCompleteMe
+# compile with C-family Languages support
+./install.py --clang-completer
+# may need upgrade python package if errors happenned when you open vim
+sudo -H pip install --upgrade cryptography
+sudo python -m easy_install --upgrade pyOpenSSL
+```
 
 
 #### reference:
@@ -89,3 +101,5 @@ https://realpython.com/blog/python/vim-and-python-a-match-made-in-heaven/
 http://www.cnblogs.com/renrenqq/archive/2010/09/09/1813669.html
 
 http://scholarslab.org/research-and-development/code-spelunking-with-ctags-and-vim/
+
+https://stackoverflow.com/questions/51283708/python-pip-package-requestsdependencywarning-when-installing-elastic-search-cura
