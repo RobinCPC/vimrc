@@ -4,6 +4,15 @@ Personal VIM settings
 
 ## How to Install :
 
+### install neovim
+
+Open terminal and neovim ppa
+``` bash
+$ sudo add-apt-repository ppa:neovim-ppa/stable
+$ sudo apt-get update
+$ sudo apt install neovim
+```
+
 ### Clone necessary repository
 
 Open terminal (in $Home directory), then type following commands
@@ -22,18 +31,24 @@ In ~/dotfiles directory, use following commands:
 ``` bash
 $ ln -s ~/dotfiles/vim ~/.vim
 $ ln -s ~/dotfiles/vim/vimrc ~/.vimrc
+$ ln -s ~/dotfiles/vim/vimrc ~/.config/nvim/init.vim
 ```
-### Install Vim package by Vundle
 
-In ~/dotfiles/vim/ directory, use following commands:
+### Install vim package by vim-plug
+
+Open terminal to download vim-plug.
 ``` bash
-$ vim vimrc
+$curl -fLo ~/dotfiles/vim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+$ vim ~/dotfiles/vim/vimrc
 ```
+
 when in vim editor, type:
 ``` vim
-:PluginList
+:PluginStatus
 :PluginInstall
 ```
+
 ### If tagbar not work, install ctag
 
 In terminal:
@@ -52,9 +67,9 @@ $ ./install.sh
 ```
 Then, go to Teminal setting:
 
-	Edit->Profile Preferences
-	General->Font
-	Change default (monospace) to DejaVu Sans Mono for Powerline | 12
+    Edit->Profile Preferences
+    General->Font
+    Change default (monospace) to DejaVu Sans Mono for Powerline | 12
 
 
 
@@ -72,3 +87,4 @@ https://realpython.com/blog/python/vim-and-python-a-match-made-in-heaven/
 
 http://www.cnblogs.com/renrenqq/archive/2010/09/09/1813669.html
 
+https://github.com/junegunn/vim-plug

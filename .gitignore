@@ -12,3 +12,5 @@ init.vim
 # ignore view folder
 view
 
+# ignore vim-plug.vim
+autoload/plug.vim

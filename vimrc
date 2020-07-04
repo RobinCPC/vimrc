@@ -5,6 +5,7 @@ let mapleader="\<Space>"    " set `space` key as leader
 let maplocalleader=","
 
 " ===== vim-plug Plugin Management ===== {{{
+source ~/.vim/autoload/plug.vim
 call plug#begin('~/.vim/plugged')
 
 " The following are examples of different formats supported.
